@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.michael.mbook">
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permisson.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/afv"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/afv"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat">
+        <activity
+            android:name=".AFVLogin"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AFVSignup"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".AFVTextToSpeech"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".AFVMain"
+            android:label="@string/title_activity_mbookmain"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            tools:ignore="WrongManifestParent" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.michael.mbook.*"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths"
+                tools:replace="android:resource" />
+        </provider>
+
+        <activity
+            android:name=".AFVFileViewer"
+            android:alwaysRetainTaskState="true"
+            android:hardwareAccelerated="true"
+            android:icon="@drawable/afv"
+            android:label="AFV">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.ALTERNATIVE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- PDF -->
+                <data
+                    android:host="*"
+                    android:mimeType="application/pdf"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="application/pdf"
+                    android:scheme="content" />
+                <!-- Audio -->
+                <data
+                    android:host="*"
+                    android:mimeType="audio/*"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="application/ogg"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="application/x-ogg"
+                    android:scheme="file" />
+                <!-- Images -->
+                <data
+                    android:host="*"
+                    android:mimeType="image/*"
+                    android:scheme="file" />
+                <!-- Videos -->
+                <data
+                    android:host="*"
+                    android:mimeType="video/*"
+                    android:scheme="file" />
+                <!-- Text -->
+                <data
+                    android:host="*"
+                    android:mimeType="text/*"
+                    android:scheme="file" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- PDF -->
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.pdf"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.pdf"
+                    android:scheme="content" />
+                <!-- Audio -->
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.mp3"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.oog"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.wav"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.mid"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.m4a"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.amr"
+                    android:scheme="file" />
+                <!-- Images -->
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.png"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.jpg"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.gif"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.bmp"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.jpeg"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.webp"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.svg"
+                    android:scheme="file" />
+                <!-- Videos -->
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.mp4"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.3gp"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.mkv"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.webm"
+                    android:scheme="file" />
+                <!-- Documents -->
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.odt"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.ott"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.odp"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.otp"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.ods"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.ots"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.fodt"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.fods"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.fodp"
+                    android:scheme="file" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AFVVideoPlayer"
+            android:alwaysRetainTaskState="true"
+            android:hardwareAccelerated="true"
+            android:icon="@drawable/afv"
+            android:label="VideoPlayer"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".AFVTextViewer"
+            android:alwaysRetainTaskState="true"
+            android:hardwareAccelerated="true"
+            android:icon="@drawable/afv"
+            android:label="TextViewer"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".AFVDOCViewer"
+            android:alwaysRetainTaskState="true"
+            android:hardwareAccelerated="true"
+            android:icon="@drawable/afv"
+            android:label="DOCViewer"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".AFVHTMLViewer"
+            android:alwaysRetainTaskState="true"
+            android:hardwareAccelerated="true"
+            android:icon="@drawable/afv"
+            android:label="DOCViewer"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".AFVMapsActivity"
+            android:label="@string/title_activity_maps">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.ALTERNATIVE" />
+            </intent-filter>
+        </activity>
+
+
+    </application>
+
+</manifest>

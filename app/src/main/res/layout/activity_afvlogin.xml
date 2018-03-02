@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/cardview_dark_background"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_dark_background"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="56dp">
+
+        <ImageView
+            android:id="@+id/kente"
+            android:layout_width="176dp"
+            android:layout_height="98dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/afv" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            >
+
+            <EditText
+                android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/cardview_light_background"
+                android:visibility="visible" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textColorHint="@color/cardview_light_background"
+                android:textColorLink="@android:color/background_light"
+                android:visibility="visible" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+
+            android:id="@+id/btn_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:text="@string/login"
+            android:textStyle="bold"
+            android:shape="rectangle"
+            android:elevation="10dp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/signup"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:textStyle="bold"
+            android:text="@string/no_account_yet_click_here_to_create_one"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8" />
+
+    </LinearLayout>
+</ScrollView>
