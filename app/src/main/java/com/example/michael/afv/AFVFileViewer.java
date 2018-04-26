@@ -1,4 +1,4 @@
-package com.example.michael.mbook;
+package com.example.michael.afv;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -75,15 +75,16 @@ import java.util.concurrent.TimeUnit;
 import static android.os.Build.VERSION.SDK_INT;
 
 public class AFVFileViewer extends AppCompatActivity
-        implements ListView.OnScrollListener, NavigationView.OnNavigationItemSelectedListener,
-        SearchView.OnQueryTextListener {
+
+    implements ListView.OnScrollListener, NavigationView.OnNavigationItemSelectedListener,
+    SearchView.OnQueryTextListener {
     static boolean mBusy = false, recentsView = false, favouritesView = false;
     static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
     static ViewHolder holder;
     Toolbar toolbar;
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
-    ListView lv;
+    ListView listview;
     File file, files[], origFiles[];
     RecentFilesStack recent;
     ArrayList<File> favourites;
@@ -97,54 +98,41 @@ public class AFVFileViewer extends AppCompatActivity
     byte data[];
     int sortCriterion = 0;
     boolean isValid, sortDesc = false, folderFirst = true, recentItems = true, hiddenFiles = true;
-    //Comparators for sorting
-    Comparator<File> byName = new Comparator<File>() {
-        @Override
-        public int compare(File f1, File f2) {
-            int res = String.CASE_INSENSITIVE_ORDER.compare(f1.getName(), f2.getName());
-            return (res == 0 ? f1.getName().compareTo(f2.getName()) : res);
-        }
+    AFVAlltogether pop = new AFVAlltogether();
+
+
+
+    Comparator<File> byName = (f1, f2) -> {
+        int res = String.CASE_INSENSITIVE_ORDER.compare(f1.getName(), f2.getName());
+        return (res == 0 ? f1.getName().compareTo(f2.getName()) : res);
     };
-    Comparator<File> byDate = new Comparator<File>() {
-        @Override
-        public int compare(File f1, File f2) {
-            if (f1.lastModified() > f2.lastModified()) return 1;
-            else if (f1.lastModified() < f2.lastModified()) return -1;
-            else return 0;
-        }
+    Comparator<File> byDate = (f1, f2) -> {
+        if (f1.lastModified() > f2.lastModified()) return 1;
+        else if (f1.lastModified() < f2.lastModified()) return -1;
+        else return 0;
     };
-    Comparator<File> byDateDesc = new Comparator<File>() {
-        @Override
-        public int compare(File f1, File f2) {
-            if (f1.lastModified() > f2.lastModified()) return -1;
-            else if (f1.lastModified() < f2.lastModified()) return 1;
-            else return 0;
-        }
+    Comparator<File> byDateDesc = (f1, f2) -> {
+        if (f1.lastModified() > f2.lastModified()) return -1;
+        else if (f1.lastModified() < f2.lastModified()) return 1;
+        else return 0;
     };
-    Comparator<File> bySize = new Comparator<File>() {
-        @Override
-        public int compare(File f1, File f2) {
-            if (f1.length() > f2.length()) return 1;
-            else if (f1.length() < f2.length()) return -1;
-            else return 0;
-        }
+    Comparator<File> bySize = (f1, f2) -> {
+        if (f1.length() > f2.length()) return 1;
+        else if (f1.length() < f2.length()) return -1;
+        else return 0;
     };
-    Comparator<File> bySizeDesc = new Comparator<File>() {
-        @Override
-        public int compare(File f1, File f2) {
-            if (f1.length() > f2.length()) return -1;
-            else if (f1.length() < f2.length()) return 1;
-            else return 0;
-        }
+    Comparator<File> bySizeDesc = (f1, f2) -> {
+        if (f1.length() > f2.length()) return -1;
+        else if (f1.length() < f2.length()) return 1;
+        else return 0;
     };
-    //extensions
+
     String audio_ext[] = {"mp3", "oog", "wav", "mid", "m4a", "amr"};
     String image_ext[] = {"png", "jpg", "gif", "bmp", "jpeg", "webp"};
     String video_ext[] = {"mp4", "3gp", "mkv", "webm"};
     String web_ext[] = {"htm", "html", "js", "xml"};
     String opendoc_ext[] = {"odt", "ott", "odp", "otp", "ods", "ots", "fodt", "fods", "fodp"};
     String txt_ext[] = {"ascii", "asm", "awk", "bash", "bat", "bf", "bsh", "c", "cert", "cgi", "clj", "conf", "cpp", "cs", "css", "csv", "elr", "go", "h", "hs", "htaccess", "htm", "html", "ini", "java", "js", "json", "key", "lisp", "log", "lua", "md", "mkdn", "pem", "php", "pl", "py", "rb", "readme", "scala", "sh", "sql", "srt", "sub", "tex", "txt", "vb", "vbs", "vhdl", "wollok", "xml", "xsd", "xsl", "yaml", "iml", "gitignore", "gradle"};
-    //only icon
     String archive_ext[] = {"zip", "jar", "rar", "tar", "gz", "lz", "7z", "tgz", "tlz", "war", "ace", "cab", "dmg", "tar.gz"};
     String doc_ext[] = {"doc", "docm", "docx", "dot", "dotm", "dotx", "odt", "ott", "fodt", "rtf", "wps"};
     String xl_ext[] = {"xls", "xlsb", "xlsm", "xlt", "xlsx", "xltm", "xltx", "xlw", "ods", "ots", "fods"};
@@ -153,29 +141,25 @@ public class AFVFileViewer extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (!checkAndRequestPermissions()) {
-            showMsg("Permissions not granted", 0);
-            finish();
+            super.onPause();
+            recreate();
             return;
         }
+
         //Setup UI
         setContentView(R.layout.file_afviewer);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        lv = (ListView) findViewById(R.id.list);
-        registerForContextMenu(lv);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                openFile(files[i]);
-            }
-        });
+        listview = (ListView) findViewById(R.id.list);
+        registerForContextMenu(listview);
+        listview.setOnItemClickListener((adapterView, view, i, l) -> openFile(files[i]));
         //Restore data
         recent = new RecentFilesStack(10);
         favourites = new ArrayList<File>();
@@ -189,8 +173,8 @@ public class AFVFileViewer extends AppCompatActivity
         navigationView.getMenu().findItem(R.id.nav_recent).setVisible(recentItems);
         adap = new EfficientAdapter(getApplicationContext());
         updateFiles(Environment.getExternalStorageDirectory());
-        lv.setAdapter(adap);
-        lv.setOnScrollListener(this);
+        listview.setAdapter(adap);
+        listview.setOnScrollListener(this);
         in = getIntent();
         if (Intent.ACTION_VIEW.equals(in.getAction()) && in.getType() != null)
             openFile(new File(in.getData().getPath()));
@@ -212,12 +196,7 @@ public class AFVFileViewer extends AppCompatActivity
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setSubmitButtonEnabled(true);
         searchView.setOnQueryTextListener(this);
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                return false;
-            }
-        });
+        searchView.setOnCloseListener(() -> false);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -235,6 +214,7 @@ public class AFVFileViewer extends AppCompatActivity
             case R.id.action_info:
                 showProperties(file);
                 break;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -281,7 +261,81 @@ public class AFVFileViewer extends AppCompatActivity
                 updateFiles(f);
             else
                 showMsg("Camera folder not accessible", 1);
-        } else if (id == R.id.nav_downloads) {
+
+        } else if (id == R.id.nav_music) {
+            File f = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
+            if (f == null || f.getPath().equals("") || !f.exists())
+                f = new File(Environment.getExternalStorageDirectory().getPath() + "/MUSIC");
+            if (f.exists())
+                updateFiles(f);
+            else
+                showMsg("Music folder not accessible", 1);
+
+        } else if (id == R.id.nav_documents) {
+            File f = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
+            if (f == null || f.getPath().equals("") || !f.exists())
+                f = new File(Environment.getExternalStorageDirectory().getPath() + "/DOCUMENTS");
+            if (f.exists())
+                updateFiles(f);
+            else
+                showMsg("Documents folder not accessible", 1);
+
+        } else if (id == R.id.nav_videos){
+            File f = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
+            if (f == null || f.getPath().equals("") || !f.exists())
+                f = new File(Environment.getExternalStorageDirectory().getPath() + "/VIDEOS/Camera");
+            if (f.exists())
+                updateFiles(f);
+            else
+                showMsg("Videos folder not accessible", 1);
+
+        } else if (id == R.id.internetbrowser) {
+
+            Uri uriUrl = Uri.parse("https://www.google.co.uk/");
+            Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+            startActivity(launchBrowser);
+
+        } else if (id == R.id.saveforoffline){
+
+            Intent body = new Intent(this, MainActivity.class);
+            startActivity(body);
+
+        } else if (id == R.id.stopwatch) {
+
+            Intent stopwatch = new Intent(this, AFVStopwatch.class);
+            startActivity(stopwatch);
+
+        } else if (id == R.id.texttospeech) {
+
+            Intent textb = new Intent(this, AFVTextToSpeech.class);
+            startActivity(textb);
+
+        } else if (id == R.id.mapsearch) {
+
+            Intent mapss = new Intent(this, AFVMapsActivity.class);
+            startActivity(mapss);
+
+        } else if (id == R.id.helpo) {
+
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle("Help");
+            alertDialog.setMessage("Welcome to App AFV, select the 3 horizontal lines to navigate throughout the application. If certain features fail to load go back and reload it again and it will reappear. To change account settings enter in field the password or email press the black change button and also the change passowrd or email button as well to confirm. Feel free to leave feedback :)");
+            alertDialog.show();
+
+        } else if (id == R.id.logout_mike) {
+
+
+            Intent logi = new Intent(this, AFVLogout.class);
+            startActivity(logi);
+
+
+        } else if (id == R.id.account_settings){
+
+            Intent account = new Intent(this, AFVAlltogether.class);
+            startActivity(account);
+
+
+        }else if (id == R.id.nav_downloads) {
             File f = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
             if (f == null || f.getPath().equals("") || !f.exists())
                 f = new File(Environment.getExternalStorageDirectory().getPath() + "/Downloads");
@@ -293,33 +347,6 @@ public class AFVFileViewer extends AppCompatActivity
             favouriteFiles();
         } else if (id == R.id.nav_recent) {
             recentFiles();
-
-        } else if (id == R.id.mapsearch){
-
-            Intent intent = new Intent(AFVFileViewer.this, AFVMapsActivity.class);
-            startActivity(intent);
-
-        } else if (id == R.id.logout) {
-
-            Intent intent = new Intent(AFVFileViewer.this, AFVLogin.class);
-            startActivity(intent);
-
-        } else if (id == R.id.help) {
-
-            android.support.v7.app.AlertDialog alertDialog = new android.support.v7.app.AlertDialog.Builder(AFVFileViewer.this).create();
-            alertDialog.setTitle("Help");
-            alertDialog.setMessage("Hello to the MBOOK app where you can read, edit and view your files in different formats. " +
-                    "The search button below can be used to use the browser of you choice.");
-            alertDialog.setButton(android.support.v7.app.AlertDialog.BUTTON_NEUTRAL, "CLOSE",
-                    (dialog, which) -> dialog.dismiss());
-            alertDialog.show();
-
-        }else if (id  == R.id.texttospeech){
-
-            Intent intent = new Intent(AFVFileViewer.this, AFVTextToSpeech.class);
-            startActivity(intent);
-
-
         } else if (id == R.id.nav_settings) {
             View settings_view = getLayoutInflater().inflate(R.layout.settings_afvview, null);
             AlertDialog.Builder settings_dialog = new AlertDialog.Builder(AFVFileViewer.this);
@@ -336,57 +363,49 @@ public class AFVFileViewer extends AppCompatActivity
             recent_items_checkbox.setChecked(recentItems);
             sort_criteria.setSelection(sortCriterion);
             sort_mode.setSelection(sortDesc ? 1 : 0);
-            settings_dialog.setPositiveButton("Save", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    folderFirst = folders_first_checkbox.isChecked();
-                    hiddenFiles = hidden_files_checkbox.isChecked();
-                    recentItems = recent_items_checkbox.isChecked();
-                    String sortBy = sort_criteria.getSelectedItem().toString();
-                    sortDesc = sort_mode.getSelectedItem().toString().equals("Descending");
-                    String criteria[] = getResources().getStringArray(R.array.sort_criteria);
-                    for (i = 0; i < criteria.length; i++) {
-                        if (sortBy.equals(criteria[i])) {
-                            sortCriterion = i;
-                            break;
-                        }
+            settings_dialog.setPositiveButton("Save", (dialogInterface, i) -> {
+                folderFirst = folders_first_checkbox.isChecked();
+                hiddenFiles = hidden_files_checkbox.isChecked();
+                recentItems = recent_items_checkbox.isChecked();
+                String sortBy = sort_criteria.getSelectedItem().toString();
+                sortDesc = sort_mode.getSelectedItem().toString().equals("Descending");
+                String criteria[] = getResources().getStringArray(R.array.sort_criteria);
+                for (i = 0; i < criteria.length; i++) {
+                    if (sortBy.equals(criteria[i])) {
+                        sortCriterion = i;
+                        break;
                     }
-                    NavigationView nav = (NavigationView) findViewById(R.id.nav_view);
-                    nav.getMenu().findItem(R.id.nav_recent).setVisible(recentItems);
-                    if (recentsView) {
-                        if (recentItems)
-                            recentFiles();
-                        else {
-                            recentsView = false;
-                            updateFiles(Environment.getExternalStorageDirectory());
-                        }
-                    } else if (favouritesView)
-                        favouriteFiles();
-                    else
-                        updateFiles(file);
-                    showMsg("Settings saved", 1);
-                    dialogInterface.dismiss();
-                    dialogInterface.cancel();
                 }
+                NavigationView nav = (NavigationView) findViewById(R.id.nav_view);
+                nav.getMenu().findItem(R.id.nav_recent).setVisible(recentItems);
+                if (recentsView) {
+                    if (recentItems)
+                        recentFiles();
+                    else {
+                        recentsView = false;
+                        updateFiles(Environment.getExternalStorageDirectory());
+                    }
+                } else if (favouritesView)
+                    favouriteFiles();
+                else
+                    updateFiles(file);
+                showMsg("Settings saved", 1);
+                dialogInterface.dismiss();
+                dialogInterface.cancel();
             });
-            settings_dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                    dialogInterface.cancel();
-                }
+            settings_dialog.setNegativeButton("Cancel", (dialogInterface, i) -> {
+                dialogInterface.dismiss();
+                dialogInterface.cancel();
             });
             settings_dialog.show();
         } else if (id == R.id.nav_about) {
             AlertDialog.Builder about_dialog = new AlertDialog.Builder(AFVFileViewer.this);
             about_dialog.setIcon(R.mipmap.ic_launcher_foreground);
-            about_dialog.setTitle("MBOOK");
-            about_dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                    dialogInterface.cancel();
-                }
+            about_dialog.setTitle("AFV");
+            about_dialog.setMessage("Version 1.0\nBy - Michael\nmichaelnortey123@gmail.com");
+            about_dialog.setPositiveButton("OK", (dialogInterface, i) -> {
+                dialogInterface.dismiss();
+                dialogInterface.cancel();
             });
             about_dialog.show();
         } else if (id == R.id.nav_feedback) {
@@ -394,7 +413,7 @@ public class AFVFileViewer extends AppCompatActivity
             email.setData(Uri.parse("mailto:"));
             String emailadd[] = {"michaelnortey123@gmail.com"};
             email.putExtra(Intent.EXTRA_EMAIL, emailadd);
-            email.putExtra(Intent.EXTRA_SUBJECT, "MBOOK Feedback");
+            email.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
             if (email.resolveActivity(getPackageManager()) != null) {
                 startActivity(email);
             }
@@ -402,6 +421,7 @@ public class AFVFileViewer extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
     }
 
     @Override
@@ -444,6 +464,9 @@ public class AFVFileViewer extends AppCompatActivity
             menu.add(Menu.NONE, 6, Menu.NONE, "Properties");
         }
     }
+
+
+
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
@@ -589,7 +612,6 @@ public class AFVFileViewer extends AppCompatActivity
                     seek.setMax(duration);
                     total_duration.setText(String.format("%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(duration), TimeUnit.MILLISECONDS.toSeconds(duration) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration))));
                     final Handler handler = new Handler();
-                    //Make sure you update Seekbar on UI thread
                     final Runnable updateseek = new Runnable() {
                         @Override
                         public void run() {
@@ -734,7 +756,6 @@ public class AFVFileViewer extends AppCompatActivity
         TextView time = (TextView) properties_view.findViewById(R.id.time);
         final TextView size = (TextView) properties_view.findViewById(R.id.size);
         final TextView details = (TextView) properties_view.findViewById(R.id.details);
-        //Fetch properties
         name.setText(current_file.getName());
         SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss a");
         time.setText(format.format(current_file.lastModified()));
@@ -805,7 +826,6 @@ public class AFVFileViewer extends AppCompatActivity
                 properties_dialog.setIcon(new BitmapDrawable(getResources(), ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(current_file.getPath()), 50, 50)));
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inJustDecodeBounds = true;
-                //Returns null, sizes are in the options variable
                 BitmapFactory.decodeFile(current_file.getPath(), options);
                 info += "\nWidth : " + options.outWidth + " pixels";
                 info += "\nHeight : " + options.outHeight + " pixels";
@@ -894,12 +914,9 @@ public class AFVFileViewer extends AppCompatActivity
             };
             t.start();
         } else ;
-        properties_dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-                dialogInterface.cancel();
-            }
+        properties_dialog.setPositiveButton("OK", (dialogInterface, i) -> {
+            dialogInterface.dismiss();
+            dialogInterface.cancel();
         });
         properties_dialog.show();
     }
@@ -963,19 +980,18 @@ public class AFVFileViewer extends AppCompatActivity
             adap.notifyDataSetChanged();
             mBusy = false;
         }
-        lv.smoothScrollToPosition(0);
+        listview.smoothScrollToPosition(0);
     }
 
     //Utility functions
     public void restoreData() {
-        SharedPreferences prefs = getSharedPreferences("MBOOK_Settings", MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences("AFV_Settings", MODE_PRIVATE);
         folderFirst = prefs.getBoolean("FoldersFirst", true);
         hiddenFiles = prefs.getBoolean("ShowHidden", true);
         recentItems = prefs.getBoolean("ShowRecents", true);
         sortDesc = prefs.getBoolean("SortDesc", false);
         sortCriterion = prefs.getInt("SortCriterion", 0);
-
-        prefs = getSharedPreferences("MBOOK_Recent_Items", MODE_PRIVATE);
+        prefs = getSharedPreferences("AFV_Recent_Items", MODE_PRIVATE);
         Collection<?> c = prefs.getAll().values();
         String paths[] = new String[c.size()];
         paths = c.toArray(paths);
@@ -986,7 +1002,7 @@ public class AFVFileViewer extends AppCompatActivity
             if (f.exists())
                 recent.push(f);
         }
-        prefs = getSharedPreferences("MBOOK_Favourites", MODE_PRIVATE);
+        prefs = getSharedPreferences("afv_Favourites", MODE_PRIVATE);
         c = prefs.getAll().values();
         paths = new String[c.size()];
         paths = c.toArray(paths);
@@ -1000,9 +1016,9 @@ public class AFVFileViewer extends AppCompatActivity
 
     public boolean saveData() {
         try {
-            SharedPreferences.Editor recent_editor = getSharedPreferences("MBOOK_Recent_Items", MODE_PRIVATE).edit();
-            SharedPreferences.Editor favourites_editor = getSharedPreferences("MBOOK_Favourites", MODE_PRIVATE).edit();
-            SharedPreferences.Editor settings_editor = getSharedPreferences("MBOOK_Settings", MODE_PRIVATE).edit();
+            SharedPreferences.Editor recent_editor = getSharedPreferences("AFV_Recent_Items", MODE_PRIVATE).edit();
+            SharedPreferences.Editor favourites_editor = getSharedPreferences("AFV_Favourites", MODE_PRIVATE).edit();
+            SharedPreferences.Editor settings_editor = getSharedPreferences("AFV_Settings", MODE_PRIVATE).edit();
             settings_editor.clear();
             settings_editor.commit();
             settings_editor.putBoolean("FoldersFirst", folderFirst);
@@ -1070,13 +1086,10 @@ public class AFVFileViewer extends AppCompatActivity
         }
         if (folderFirst) {
             try {
-                Arrays.sort(f, new Comparator<File>() {
-                    @Override
-                    public int compare(File f1, File f2) {
-                        if (f1.isDirectory() && !f2.isDirectory()) return -1;
-                        else if (!f1.isDirectory() && f2.isDirectory()) return 1;
-                        else return 0;
-                    }
+                Arrays.sort(f, (f1, f2) -> {
+                    if (f1.isDirectory() && !f2.isDirectory()) return -1;
+                    else if (!f1.isDirectory() && f2.isDirectory()) return 1;
+                    else return 0;
                 });
             } catch (Exception e) {
             }
@@ -1086,8 +1099,8 @@ public class AFVFileViewer extends AppCompatActivity
 
     public boolean checkAndRequestPermissions() {
         if (SDK_INT >= Build.VERSION_CODES.M) {
-            int permissionStorage = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-            int permissionWriteStorage = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            int permissionStorage = ContextCompat.checkSelfPermission(AFVFileViewer.this, Manifest.permission.READ_EXTERNAL_STORAGE);
+            int permissionWriteStorage = ContextCompat.checkSelfPermission(AFVFileViewer.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
             List<String> listPermissionsNeeded = new ArrayList<>();
             if (permissionStorage != PackageManager.PERMISSION_GRANTED) {
                 listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
@@ -1096,7 +1109,7 @@ public class AFVFileViewer extends AppCompatActivity
                 listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
             }
             if (!listPermissionsNeeded.isEmpty()) {
-                ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), REQUEST_ID_MULTIPLE_PERMISSIONS);
+                ActivityCompat.requestPermissions(AFVFileViewer.this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), REQUEST_ID_MULTIPLE_PERMISSIONS);
                 return false;
             } else {
                 return true;
@@ -1129,7 +1142,7 @@ public class AFVFileViewer extends AppCompatActivity
         String s = "";
         if (file.getParent() != null) {
             try {
-                ProcessBuilder processBuilder = new ProcessBuilder("ls", "-l").directory(new File(file.getParent()));// TODO CHECK IF THE FILE IS SD CARD PARENT IS NULL
+                ProcessBuilder processBuilder = new ProcessBuilder("ls", "-l").directory(new File(file.getParent()));
                 Process process = processBuilder.start();
                 PrintWriter out = new PrintWriter(new OutputStreamWriter(process.getOutputStream()));
                 BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -1145,6 +1158,7 @@ public class AFVFileViewer extends AppCompatActivity
 
     public static long getFolderSize(File file) {
         long size;
+        String fi = "Files";
         if (file.exists() && file.isDirectory()) {
             size = 0;
             File arr[] = file.listFiles();
@@ -1196,15 +1210,12 @@ public class AFVFileViewer extends AppCompatActivity
     }
 
     public static int calculateSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
         final int height = options.outHeight;
         final int width = options.outWidth;
         int inSampleSize = 1;
         if (height > reqHeight || width > reqWidth) {
             final int halfHeight = height / 2;
             final int halfWidth = width / 2;
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-            // height and width larger than the requested height and width.
             while ((halfHeight / inSampleSize) > reqHeight
                     && (halfWidth / inSampleSize) > reqWidth) {
                 inSampleSize *= 2;
@@ -1214,13 +1225,10 @@ public class AFVFileViewer extends AppCompatActivity
     }
 
     public static Bitmap decodeSampledBitmap(String pathToFile, int reqWidth, int reqHeight) {
-        // First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(pathToFile, options);
-        // Calculate inSampleSize
         options.inSampleSize = calculateSampleSize(options, reqWidth, reqHeight);
-        // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeFile(pathToFile, options);
     }
@@ -1230,7 +1238,6 @@ public class AFVFileViewer extends AppCompatActivity
         private Context mContext;
 
         public EfficientAdapter(Context context) {
-            // Cache the LayoutInflate to avoid asking for a new one each time.
             mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             mContext = context;
         }
@@ -1251,19 +1258,7 @@ public class AFVFileViewer extends AppCompatActivity
         }
 
         public View getView(int position, View view, ViewGroup parent) {
-            // A ViewHolder keeps references to children views to avoid
-            // unneccessary calls
-            // to findViewById() on each row.
-
-            // When convertView is not null, we can reuse it directly, there is
-            // no need
-            // to reinflate it. We only inflate a new View when the convertView
-            // supplied
-            // by ListView is null.
             if (view == null) {
-                // Creates a ViewHolder and store references to the two children
-                // views
-                // we want to bind data to.
                 view = mInflater.inflate(R.layout.list_afvitem, parent, false);
                 holder = new ViewHolder();
                 holder.name = (TextView) view.findViewById(R.id.name);
@@ -1272,8 +1267,6 @@ public class AFVFileViewer extends AppCompatActivity
                 holder.icon = (ImageView) view.findViewById(R.id.icon);
                 view.setTag(holder);
             } else {
-                // Get the ViewHolder back to get fast access to the TextView
-                // and the ImageView.
                 holder = (ViewHolder) view.getTag();
             }
             File current_file = files[position];
@@ -1434,3 +1427,26 @@ public class AFVFileViewer extends AppCompatActivity
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*** Reference
+ * URL : https://github.com/praharshjain/Vudit
+ * Year of Access: 2017/18
+ * Name: Praharsh Jain
+ */

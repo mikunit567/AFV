@@ -1,140 +1,82 @@
-package com.example.michael.mbook;
+package com.example.michael.afv;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class AFVLogin extends AppCompatActivity {
-    private static final String TAG = "LoginActivity";
-    private static final int REQUEST_SIGNUP = 0;
 
-    @InjectView(R.id.input_email) EditText emailText;
-    @InjectView(R.id.input_password) EditText passwordText;
-    @InjectView(R.id.btn_login) Button loginButton;
-    @InjectView(R.id.signup) TextView signupLink;
+    private EditText inputEmail, inputPassword;
+    private FirebaseAuth auth;
+    private ProgressBar progressBar;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() != null) {
+            startActivity(new Intent(AFVLogin.this, AFVSplashScreen.class));
+            finish();
+        }
+
         setContentView(R.layout.activity_afvlogin);
-        ButterKnife.inject(this);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        inputEmail = findViewById(R.id.email);
+        inputPassword = findViewById(R.id.password);
+        progressBar = findViewById(R.id.progressBar);
+        Button btnSignup = findViewById(R.id.btn_signup);
+        Button btnLogin = findViewById(R.id.btn_login);
+        Button btnReset = findViewById(R.id.btn_reset_password);
 
-            @Override
-            public void onClick(View v) {
-                login();
+        auth = FirebaseAuth.getInstance();
+
+        btnSignup.setOnClickListener(v -> startActivity(new Intent(AFVLogin.this, AFVSignup.class)));
+
+        btnReset.setOnClickListener(v -> startActivity(new Intent(AFVLogin.this, AFVPasswordReset.class)));
+
+        btnLogin.setOnClickListener(v -> {
+            String email = inputEmail.getText().toString();
+            final String password = inputPassword.getText().toString();
+
+            if (TextUtils.isEmpty(email)) {
+                Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            if (TextUtils.isEmpty(password)) {
+                Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            progressBar.setVisibility(View.VISIBLE);
+
+            auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(AFVLogin.this, task -> {
+                        progressBar.setVisibility(View.GONE);
+                        if (!task.isSuccessful()) {
+                            if (password.length() < 6) {
+                                inputPassword.setError(getString(R.string.minimum_password));
+                            } else {
+                                Toast.makeText(AFVLogin.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Intent intent = new Intent(AFVLogin.this, AFVSplashScreen.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
         });
-
-
-        signupLink.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // Start the Signup activity
-                Intent intent = new Intent(getApplicationContext(), AFVSignup.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
-            }
-        });
     }
-
-    public void login() {
-        Log.d(TAG, "Login");
-
-        if (!validate()) {
-            onLoginFailed();
-            return;
-        }
-
-        loginButton.setEnabled(false);
-
-        final ProgressDialog progressDialog = new ProgressDialog(AFVLogin.this, R.style.MyAlertDialogStyle);
-
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Please wait ...");
-        progressDialog.show();
-
-        String email = emailText.getText().toString();
-        String password = passwordText.getText().toString();
-
-
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_SIGNUP) {
-            if (resultCode == RESULT_OK) {
-
-                Intent intent = new Intent(AFVLogin.this, AFVFileViewer.class);
-                startActivity(intent);
-                this.finish();
-            }
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        // disable going back to the MainActivity
-        moveTaskToBack(true);
-    }
-
-    public void onLoginSuccess() {
-        loginButton.setEnabled(true);
-        Intent intent = new Intent(AFVLogin.this, AFVFileViewer.class);
-        startActivity(intent);
-        finish();
-    }
-
-    public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
-        loginButton.setEnabled(true);
-    }
-
-    public boolean validate() {
-        boolean valid = true;
-
-        String email = emailText.getText().toString();
-        String password = passwordText.getText().toString();
-
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailText.setError("enter a valid email address");
-            valid = false;
-        } else {
-            emailText.setError(null);
-        }
-
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            passwordText.setError("between 4 and 10 alphanumeric characters");
-            valid = false;
-        } else {
-            passwordText.setError(null);
-        }
-
-        return valid;
-    }
-
-
-
 }
+
+/* REF https://www.androidhive.info/2016/06/android-getting-started-firebase-simple-login-registration-auth/ ***/

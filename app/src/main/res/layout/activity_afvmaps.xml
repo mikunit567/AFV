@@ -24,22 +24,19 @@
         android:layout_height="45dp"
         android:layout_alignBaseline="@+id/TF_location"
         android:layout_alignBottom="@+id/TF_location"
-        android:layout_toEndOf="@+id/B_to"
+        android:layout_alignParentEnd="true"
         android:onClick="onClick"
         android:text="Search" />
 
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/B_libraries"
-        tools:context="com.example.priyanka.mapsdemo.MapsActivity" />
+        android:layout_below="@+id/B_libraries"/>
 
     <Button
         android:id="@+id/B_libraries"
@@ -56,19 +53,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/TF_location"
-        android:layout_toEndOf="@+id/B_libraries"
+        android:layout_centerHorizontal="true"
         android:onClick="onClick"
         android:text="Schools" />
-
-    <Button
-        android:id="@+id/B_to"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/B_schools"
-        android:layout_alignBottom="@+id/B_schools"
-        android:layout_toEndOf="@+id/B_schools"
-        android:onClick="onClick"
-        android:text="Directions" />
 
 
 </RelativeLayout>

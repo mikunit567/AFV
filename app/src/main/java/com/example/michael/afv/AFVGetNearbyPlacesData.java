@@ -1,4 +1,4 @@
-package com.example.michael.mbook;
+package com.example.michael.afv;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -39,7 +39,7 @@ class AFVGetNearbyPlacesData extends AsyncTask<Object, String, String> {
     protected void onPostExecute(String s){
 
         List<HashMap<String, String>> nearbyPlaceList;
-        AFVDataParser parser = new AFVDataParser();
+        com.example.michael.afv.AFVDataParser parser = new com.example.michael.afv.AFVDataParser();
         nearbyPlaceList = parser.parse(s);
         Log.d("nearbyplacesdata","called parse method");
         showNearbyPlaces(nearbyPlaceList);
@@ -68,3 +68,19 @@ class AFVGetNearbyPlacesData extends AsyncTask<Object, String, String> {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+/*** Reference
+ * URL : https://github.com/priyankapakhale/GoogleMapsNearbyPlacesDemo/blob/master/app/src/main/java/com/example/priyanka/mapsdemo/MapsActivity.java
+ * Year of Access: 2017/18
+ * Name: Praharsh Jain
+ */

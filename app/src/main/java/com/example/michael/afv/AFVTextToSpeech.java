@@ -1,4 +1,4 @@
-package com.example.michael.mbook;
+package com.example.michael.afv;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,9 +6,12 @@ import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+
+
 import java.util.HashMap;
 import java.util.Locale;
-import android.widget.Toast;
 
 public class AFVTextToSpeech extends Activity {
     TextToSpeech t1;
@@ -26,13 +29,11 @@ public class AFVTextToSpeech extends Activity {
             @Override
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
-                    t1.setLanguage(Locale.FRENCH);
-                    t1.isLanguageAvailable(Locale.FRENCH);
-                }
+                    t1.setLanguage(Locale.ENGLISH);                }
             }
         });
 
-        b1.setOnClickListener(new View.OnClickListener() {
+        b1.setOnClickListener(new View.OnClickListener() { // create an onclick listener to record entered text
             @Override
             public void onClick(View v) {
 
@@ -55,3 +56,11 @@ public class AFVTextToSpeech extends Activity {
         super.onPause();
     }
 }
+
+
+
+/*** Reference
+ * URL : https://developer.android.com/reference/android/speech/tts/TextToSpeech.html
+ * Year of Access: 2017/18
+ * Name: TextToSpeech
+ */

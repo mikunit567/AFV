@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:id="@+id/addActivityLayout"
+	android:padding="5dp">
+
+	<ScrollView
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:id="@+id/add_activity_editor_scrollview">
+
+		<RelativeLayout
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:orientation="vertical">
+
+			<TextView
+				android:layout_height="100dp"
+				android:text="@string/tip_in_your_web_browser_choose_share_and_then_save_for_offline_to_quickly_save_pages_n_nyou_can_save_multiple_urls_separated_by_newline_n"
+				android:layout_width="wrap_content"
+				android:id="@+id/tipText"
+				android:layout_marginStart="5dp"/>
+
+			<EditText
+				android:id="@+id/frst_editTxt"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/http_example_com_example"
+				android:inputType="textMultiLine|textUri"
+				android:imeOptions="actionNone"
+				android:layout_below="@id/tipText"/>
+
+			<LinearLayout
+				style="?android:attr/buttonBarStyle"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal"
+				android:layout_below="@id/frst_editTxt"
+				android:id="@+id/addactivityLinearLayout1">
+
+
+				<Button
+					android:layout_height="wrap_content"
+					style="?android:attr/buttonBarButtonStyle"
+					android:text="@string/url_from_clipboard"
+					android:layout_width="match_parent"
+					android:onClick="btn_paste"
+					android:layout_weight="0.5"
+					android:id="@+id/pasteButton" />
+
+				<Button
+					style="?android:attr/buttonBarButtonStyle"
+					android:id="@+id/save_btn"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/ok"
+					android:onClick="okButtonClick"
+					android:layout_weight="0.5"
+					android:background="@drawable/normal_button_selector"/>
+
+			</LinearLayout>
+
+		</RelativeLayout>
+
+	</ScrollView>
+
+</RelativeLayout>
+

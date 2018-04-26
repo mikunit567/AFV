@@ -1,4 +1,4 @@
-package com.example.michael.mbook;
+package com.example.michael.afv;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.MediaController;
 import android.widget.VideoView;
+
 
 public class AFVVideoPlayer extends Activity {
     VideoView vw;
@@ -57,3 +58,29 @@ public class AFVVideoPlayer extends Activity {
         super.onDestroy();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*** Reference
+ * URL : https://github.com/praharshjain/Vudit
+ * Year of Access: 2017/18
+ * Name: Praharsh Jain
+ */

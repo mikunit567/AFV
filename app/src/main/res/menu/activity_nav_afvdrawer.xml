@@ -21,14 +21,43 @@
             android:title="Camera Folder" />
 
         <item
+            android:id="@+id/nav_music"
+            android:icon="@drawable/ic_music"
+            android:title="Music Folder" />
+        <item
+            android:id="@+id/nav_videos"
+            android:icon="@drawable/ic_video"
+            android:title="Videos Folder" />
+        <item
+            android:id="@+id/nav_documents"
+            android:icon="@drawable/ic_file"
+            android:title="Documents Folder" />
+
+        <item
             android:id="@+id/texttospeech"
-            android:icon="@android:drawable/ic_menu_mapmode"
-            android:title="Text to Speech"/>
+            android:enabled="true"
+            android:icon="@android:drawable/ic_menu_slideshow"
+            android:title="Text to Speech" />
+
+        <item
+            android:id="@+id/internetbrowser"
+            android:icon="@drawable/ic_action_search"
+            android:title="Internet"/>
+
+        <item
+            android:id="@+id/saveforoffline"
+            android:icon="@drawable/ic_action_search"
+            android:title="Save Webpage Offline"/>
 
         <item
             android:id="@+id/mapsearch"
             android:icon="@android:drawable/ic_menu_mapmode"
             android:title="Map" />
+
+        <item
+            android:id="@+id/stopwatch"
+            android:icon="@android:drawable/ic_menu_help"
+            android:title="Stopwatch" />
 
         <item
             android:id="@+id/nav_downloads"
@@ -47,16 +76,11 @@
             android:icon="@android:drawable/ic_menu_preferences"
             android:title="Settings" />
 
-
         <item
-            android:id="@+id/help"
+            android:id="@+id/helpo"
             android:icon="@android:drawable/ic_menu_help"
             android:title="Help" />
 
-        <item
-            android:id="@+id/logout"
-            android:icon="@android:drawable/ic_media_pause"
-            android:title="Logout" />
 
     </group>
 
@@ -70,7 +94,20 @@
                 android:id="@+id/nav_feedback"
                 android:icon="@android:drawable/ic_dialog_email"
                 android:title="Feedback" />
+
+            <item
+                android:id="@+id/account_settings"
+                android:icon="@android:drawable/ic_dialog_email"
+                android:title="Account Settings" />
+
+            <item
+                android:id="@+id/logout_mike"
+                android:icon="@android:drawable/ic_delete"
+                android:title="Logout" />
+
+
         </menu>
     </item>
 
 </menu>
+

@@ -1,4 +1,4 @@
-package com.example.michael.mbook;
+package com.example.michael.afv;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -50,3 +50,27 @@ public class AFVURL {
         return data;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*** Reference
+ * URL : https://github.com/praharshjain/Vudit
+ * Year of Access: 2017/18
+ * Name: Praharsh Jain
+ */

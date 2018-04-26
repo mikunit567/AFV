@@ -1,4 +1,4 @@
-package com.example.michael.mbook;
+package com.example.michael.afv;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -14,7 +14,6 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -33,10 +32,8 @@ public class AFVTextViewer extends AppCompatActivity {
         wv = (WebView) findViewById(R.id.browser);
         wv.setWebViewClient(new MyClient());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            // chromium, enable hardware acceleration
             wv.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         } else {
-            // older android version, disable hardware acceleration
             wv.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         }
         wv.setWebChromeClient(new WebChromeClient() {
@@ -125,3 +122,19 @@ public class AFVTextViewer extends AppCompatActivity {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+/*** Reference
+ * URL : https://github.com/praharshjain/Vudit
+ * Year of Access: 2017/18
+ * Name: Praharsh Jain
+ */

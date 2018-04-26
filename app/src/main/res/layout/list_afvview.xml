@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.michael.mbook.AFVFileViewer"
+    tools:context="com.example.michael.afv.AFVFileViewer"
     tools:showIn="@layout/app_bar_afvnav">
+
 
     <ListView
         android:id="@+id/list"

@@ -1,11 +1,9 @@
-package com.example.michael.mbook;
+package com.example.michael.afv;
 
 import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -85,3 +83,29 @@ public class AFVDataParser {
         return getPlaces(jsonArray);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*** Reference
+ * URL : https://github.com/praharshjain/Vudit
+ * Year of Access: 2017/18
+ * Name: Praharsh Jain
+ */

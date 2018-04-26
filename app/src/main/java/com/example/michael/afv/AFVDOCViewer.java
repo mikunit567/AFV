@@ -1,4 +1,4 @@
-package com.example.michael.mbook;
+package com.example.michael.afv;
 
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -11,6 +11,8 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+
 
 import java.net.URLEncoder;
 
@@ -59,9 +61,9 @@ public class AFVDOCViewer extends AppCompatActivity {
         } catch (Exception e) {
         }
         if (isPDF)
-            wv.loadUrl("file:///android_asset/pdfviewer/web/viewer.html?file=" + file_path);
+            wv.loadUrl("file:///android_asset/afvpdfviewer/web/viewer.html?file=" + file_path);
         else
-            wv.loadUrl("file:///android_asset/docviewer/index.html?file=" + file_path);
+            wv.loadUrl("file:///android_asset/afvdocviewer/index.html?file=" + file_path);
     }
 
     @Override
@@ -93,3 +95,25 @@ public class AFVDOCViewer extends AppCompatActivity {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*** Reference
+ * URL : https://github.com/praharshjain/Vudit
+ * Year of Access: 2017/18
+ * Name: Praharsh Jain
+ */

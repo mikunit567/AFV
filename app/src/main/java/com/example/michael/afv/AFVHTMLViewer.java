@@ -1,4 +1,4 @@
-package com.example.michael.mbook;
+package com.example.michael.afv;
 
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -11,6 +11,8 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+
 
 public class AFVHTMLViewer extends AppCompatActivity {
     WebView wv;
@@ -83,3 +85,26 @@ public class AFVHTMLViewer extends AppCompatActivity {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*** Reference
+ * URL : https://github.com/praharshjain/Vudit
+ * Year of Access: 2017/18
+ * Name: Praharsh Jain
+ */

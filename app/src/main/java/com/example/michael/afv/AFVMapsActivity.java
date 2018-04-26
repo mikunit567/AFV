@@ -1,7 +1,6 @@
-package com.example.michael.mbook;
+package com.example.michael.afv;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -37,8 +36,8 @@ import java.util.List;
 
 public class AFVMapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
-GoogleApiClient.OnConnectionFailedListener,
-LocationListener{
+        GoogleApiClient.OnConnectionFailedListener,
+        LocationListener{
 
 
     private GoogleMap mMap;
@@ -54,18 +53,26 @@ LocationListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afvmaps);
 
+
+        // check if the permission has been granted to access the map
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         {
-            checkLocationPermission();
+
+            if (!checkLocationPermission()) {
+
+                super.onPause();
+                recreate();
+                return;
+            }
+
 
         }
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
-    @SuppressLint("MissingPermission")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch(requestCode)
@@ -77,28 +84,15 @@ LocationListener{
                     {
                         if(client == null)
                         {
-                            bulidGoogleApiClient();
+                            bulidGoogleApiClient(); //build the api client once the permission has been granted and the correct manifest properties have been initialised
                         }
                         mMap.setMyLocationEnabled(true);
                     }
                 }
-                else
-                {
-                    Toast.makeText(this,"Permission Denied" , Toast.LENGTH_LONG).show();
-                }
         }
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-    @SuppressLint("MissingPermission")
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -112,14 +106,14 @@ LocationListener{
 
     protected synchronized void bulidGoogleApiClient() {
         client = new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(LocationServices.API).build();
-        client.connect();
+        client.connect(); // calling from api client using the api key to allow the view of the map
 
     }
 
     @Override
     public void onLocationChanged(Location location) {
 
-        latitude = location.getLatitude();
+        latitude = location.getLatitude(); // retrieve coordinates to show the locatoin
         longitude = location.getLongitude();
         lastlocation = location;
         if(currentLocationmMarker != null)
@@ -131,7 +125,7 @@ LocationListener{
         LatLng latLng = new LatLng(location.getLatitude() , location.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title("Current Location");
+        markerOptions.title("Current Location"); // add title to say that the current location is the location of device
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
         currentLocationmMarker = mMap.addMarker(markerOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -146,11 +140,11 @@ LocationListener{
     public void onClick(View v)
     {
         Object dataTransfer[] = new Object[2];
-        AFVGetNearbyPlacesData AFVGetNearbyPlacesData = new AFVGetNearbyPlacesData();
+        AFVGetNearbyPlacesData getNearbyPlacesData = new AFVGetNearbyPlacesData();
 
         switch(v.getId())
         {
-            case R.id.B_search:
+            case R.id.B_search: // case statement for the search functionality of the feature
                 EditText tf_location =  findViewById(R.id.TF_location);
                 String location = tf_location.getText().toString();
                 List<Address> addressList;
@@ -174,6 +168,10 @@ LocationListener{
                                 mMap.addMarker(markerOptions);
                                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                                 mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+
+                                // list created for possible location
+
+
                             }
                         }
                     } catch (IOException e) {
@@ -183,13 +181,15 @@ LocationListener{
                 break;
             case R.id.B_libraries:
                 mMap.clear();
-                String hospital = "library";
-                String url = getUrl(latitude, longitude, hospital);
+                String library = "library";
+                String url = getUrl(latitude, longitude, library);
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
 
-                AFVGetNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(AFVMapsActivity.this, "Showing Nearby Libraries", Toast.LENGTH_SHORT).show();
+                // if the find nearest library button is selected then it will show the nearest libraries on the map
+
+                getNearbyPlacesData.execute(dataTransfer);
+                Toast.makeText(AFVMapsActivity.this, "Showing Nearby Libraries", Toast.LENGTH_SHORT).show(); // widget created to confirm this
                 break;
 
 
@@ -200,11 +200,12 @@ LocationListener{
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
 
-                AFVGetNearbyPlacesData.execute(dataTransfer);
+                // finding the nearest school of location of device
+
+                getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(AFVMapsActivity.this, "Showing Nearby Schools", Toast.LENGTH_SHORT).show();
                 break;
-                
-            case R.id.B_to:
+
         }
     }
 
@@ -219,7 +220,9 @@ LocationListener{
         googlePlaceUrl.append("&sensor=true");
         googlePlaceUrl.append("&key="+"AIzaSyBLEPBRfw7sMb73Mr88L91Jqh3tuE4mKsE");
 
-        Log.d("AFVMapsActivity", "url = "+googlePlaceUrl.toString());
+        // ascertain the api key and allow an url to be formed from query
+
+        Log.d("MapsActivity", "url = "+googlePlaceUrl.toString());
 
         return googlePlaceUrl.toString();
     }
