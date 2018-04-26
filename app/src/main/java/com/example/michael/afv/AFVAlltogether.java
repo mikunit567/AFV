@@ -1,8 +1,28 @@
-package com.example.michael.afv;
+/**
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+ **/
 
 /**
  * Created by Michael on 18/03/2018.
  */
+
+
+
+package com.example.michael.afv;
+
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,7 +60,7 @@ public class AFVAlltogether extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afvmaino);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.app_name));
 
         //get firebase auth instance
@@ -62,18 +82,18 @@ public class AFVAlltogether extends AppCompatActivity {
             }
         };
 
-        btnChangeEmail = (Button) findViewById(R.id.change_email_button);
-        btnChangePassword = (Button) findViewById(R.id.change_password_button);
-        btnSendResetEmail = (Button) findViewById(R.id.sending_pass_reset_button);
-        changeEmail = (Button) findViewById(R.id.changeEmail);
-        changePassword = (Button) findViewById(R.id.changePass);
-        sendEmail = (Button) findViewById(R.id.send);
-        remove = (Button) findViewById(R.id.remove);
+        btnChangeEmail = findViewById(R.id.change_email_button);
+        btnChangePassword = findViewById(R.id.change_password_button);
+        btnSendResetEmail = findViewById(R.id.sending_pass_reset_button);
+        changeEmail = findViewById(R.id.changeEmail);
+        changePassword = findViewById(R.id.changePass);
+        sendEmail = findViewById(R.id.send);
+        remove = findViewById(R.id.remove);
 
-        oldEmail = (EditText) findViewById(R.id.old_email);
-        newEmail = (EditText) findViewById(R.id.new_email);
-        password = (EditText) findViewById(R.id.password);
-        newPassword = (EditText) findViewById(R.id.newPassword);
+        oldEmail = findViewById(R.id.old_email);
+        newEmail = findViewById(R.id.new_email);
+        password = findViewById(R.id.password);
+        newPassword = findViewById(R.id.newPassword);
 
         oldEmail.setVisibility(View.GONE);
         newEmail.setVisibility(View.GONE);
@@ -84,7 +104,7 @@ public class AFVAlltogether extends AppCompatActivity {
         sendEmail.setVisibility(View.GONE);
         remove.setVisibility(View.GONE);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBar);
 
         if (progressBar != null) {
             progressBar.setVisibility(View.GONE);
