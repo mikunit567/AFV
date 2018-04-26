@@ -42,11 +42,11 @@ import java.util.List;
 
 
 public class DisplayAdapter extends BaseAdapter {
-	
+
 	public enum SortOrder {
 		NEWEST_FIRST, OLDEST_FIRST, ALPHABETICAL;
-		
-		public static int toInt (SortOrder o) {
+
+		public static int toInt(SortOrder o) {
 			switch (o) {
 				case OLDEST_FIRST:
 					return 1;
@@ -56,8 +56,8 @@ public class DisplayAdapter extends BaseAdapter {
 					return 0;
 			}
 		}
-		
-		public static SortOrder fromInt (int i) {
+
+		public static SortOrder fromInt(int i) {
 			switch (i) {
 				case 1:
 					return OLDEST_FIRST;
@@ -68,21 +68,21 @@ public class DisplayAdapter extends BaseAdapter {
 			}
 		}
 	}
-	
+
 	public enum Layout {
 		DEFAULT, GRID, DETAILS_THUMBNAILS, SMALL_TEXT_ONLY, SMALL_ICON;
-		
+
 		private static Layout currentLayout = DEFAULT;
-		
-		public static void setCurrentLayout (Layout l) {
+
+		public static void setCurrentLayout(Layout l) {
 			currentLayout = l;
 		}
-		
-		public static Layout getCurrentLayout () {
+
+		public static Layout getCurrentLayout() {
 			return currentLayout;
 		}
-		
-		public static Layout fromInt (int i) {
+
+		public static Layout fromInt(int i) {
 			switch (i) {
 				case 2:
 					return GRID;
@@ -96,8 +96,8 @@ public class DisplayAdapter extends BaseAdapter {
 					return DEFAULT;
 			}
 		}
-		
-		public static boolean hasDate (Layout l) {
+
+		public static boolean hasDate(Layout l) {
 			return l == Layout.DETAILS_THUMBNAILS || l == Layout.SMALL_TEXT_ONLY || l == Layout.DEFAULT;
 		}
 	}
@@ -129,7 +129,7 @@ public class DisplayAdapter extends BaseAdapter {
 				sqlStatement = "SELECT * FROM " + AFVDatabase.TABLE_NAME + " WHERE " + AFVDatabase.TITLE + " LIKE'%" + searchQuery + "%' ORDER BY " + AFVDatabase.ID + " DESC";
 				break;
 		}
-		
+
 		dbCursor = dataBase.rawQuery(sqlStatement, null);
 		dbCursor.moveToFirst();
 		if (dataSetChanged) notifyDataSetChanged();
@@ -143,7 +143,7 @@ public class DisplayAdapter extends BaseAdapter {
 
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(mContext);
 
-		Layout.setCurrentLayout(Layout.fromInt(Integer.parseInt(sharedPref.getString("layout" , "1"))));
+		Layout.setCurrentLayout(Layout.fromInt(Integer.parseInt(sharedPref.getString("layout", "1"))));
 		darkMode = sharedPref.getBoolean("dark_mode", false);
 
 		refreshData(null, SortOrder.NEWEST_FIRST, false);
@@ -157,7 +157,7 @@ public class DisplayAdapter extends BaseAdapter {
 
 	@Override
 	public boolean isEmpty() {
-        return dbCursor.getCount() == 0;
+		return dbCursor.getCount() == 0;
 	}
 
 	public int getCount() {
@@ -179,21 +179,25 @@ public class DisplayAdapter extends BaseAdapter {
 		dbCursor.moveToPosition(position);
 		return dbCursor.getString(dbCursor.getColumnIndex(type));
 	}
-	
-	private View inflateView (View convertView, Holder mHolder) {
+
+	private View inflateView(View convertView, Holder mHolder) {
 		LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		switch (Layout.getCurrentLayout()) {
-			case GRID: 
-				convertView = layoutInflater.inflate(R.layout.listcell_grid, null); break;
-			case DETAILS_THUMBNAILS: 
-				convertView = layoutInflater.inflate(R.layout.listcell_list_details, null); break;
-			case SMALL_TEXT_ONLY: 
-				convertView = layoutInflater.inflate(R.layout.listcell_list_details_small, null); break;
-			case SMALL_ICON: 
-				convertView = layoutInflater.inflate(R.layout.listcell_list_details_small_icon_only, null); break;
-			default: 
+			case GRID:
+				convertView = layoutInflater.inflate(R.layout.listcell_grid, null);
+				break;
+			case DETAILS_THUMBNAILS:
+				convertView = layoutInflater.inflate(R.layout.listcell_list_details, null);
+				break;
+			case SMALL_TEXT_ONLY:
+				convertView = layoutInflater.inflate(R.layout.listcell_list_details_small, null);
+				break;
+			case SMALL_ICON:
+				convertView = layoutInflater.inflate(R.layout.listcell_list_details_small_icon_only, null);
+				break;
+			default:
 				convertView = layoutInflater.inflate(R.layout.listcell_default, null);
-		}	
+		}
 		if (darkMode) {
 			convertView.setBackgroundColor(Color.BLACK);
 			if (Layout.hasDate(Layout.getCurrentLayout())) {
@@ -220,33 +224,32 @@ public class DisplayAdapter extends BaseAdapter {
 			mHolder.listimage = (ImageView) convertView.findViewById(R.id.listimage);
 		}
 		convertView.setTag(mHolder);
-		
+
 		return convertView;
 	}
-	
-	private void setListImage (ImageView imageView) {
+
+	private void setListImage(ImageView imageView) {
 		if (Layout.getCurrentLayout() == Layout.SMALL_TEXT_ONLY) return;
 		switch ((String) imageView.getTag()) {
 			case "show:icon":
 				File icon = new File(new File(dbCursor.getString(dbCursor.getColumnIndex(AFVDatabase.THUMBNAIL))).getParent(), "saveForOffline_icon.png");
 				Picasso.with(mContext).load(icon).error(R.drawable.icon_website_large).into(imageView);
-			break;
+				break;
 			case "show:thumbnail":
 				File image = new File(dbCursor.getString(dbCursor.getColumnIndex(AFVDatabase.THUMBNAIL)));
 				Picasso.with(mContext).load(image).placeholder(R.drawable.placeholder).into(imageView);
-			break;
+				break;
 			default:
 				Log.e("displayAdapter", "Bug: image / icon not set due to imageView.getTag() returning bad value:" + imageView.getTag());
 		}
 	}
 
 
-
 	public View getView(int position, View convertView, ViewGroup parent) {
 		dbCursor.moveToPosition(position);
 
 		Holder mHolder = null;
-		
+
 		if (convertView == null) {
 			mHolder = new Holder();
 			convertView = inflateView(convertView, mHolder);
@@ -276,7 +279,7 @@ public class DisplayAdapter extends BaseAdapter {
 		mHolder.txt_filelocation.setText(dbCursor.getString(dbCursor.getColumnIndex(AFVDatabase.FILE_LOCATION)));
 		mHolder.txt_orig_url.setText(dbCursor.getString(dbCursor.getColumnIndex(AFVDatabase.ORIGINAL_URL)));
 		mHolder.txt_title.setText(dbCursor.getString(dbCursor.getColumnIndex(AFVDatabase.TITLE)));
-		
+
 		setListImage(mHolder.listimage);
 
 		return convertView;
@@ -292,17 +295,6 @@ public class DisplayAdapter extends BaseAdapter {
 		Bitmap mBitmap;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

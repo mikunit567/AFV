@@ -163,5 +163,5 @@ public class FaviconFetcher {
 /*** Reference
  * URL : https://github.com/JonasCz/save-for-offline/tree/master/app/src/main/java/jonas/tool/saveForOffline
  * Year of Access: 2017/18
- * Name: JonasCz
+ * Name: Jonas Czech
  */

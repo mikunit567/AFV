@@ -150,3 +150,9 @@ public class NotificationTools {
 		builder.addAction(R.drawable.ic_notify_retry, "Retry", pendingIntent);
 	}
 }
+
+/*** Reference
+ * URL : https://github.com/JonasCz/save-for-offline/tree/master/app/src/main/java/jonas/tool/saveForOffline
+ * Year of Access: 2017/18
+ * Name: Jonas Czech
+ */

@@ -62,3 +62,9 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 	}
 
 }
+
+/*** Reference
+ * URL : https://github.com/JonasCz/save-for-offline/tree/master/app/src/main/java/jonas/tool/saveForOffline
+ * Year of Access: 2017/18
+ * Name: Jonas Czech
+ */
