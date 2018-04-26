@@ -16,7 +16,6 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="e16c0ec8-5371-48ab-9438-d6b9736114ef" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_afvmaps.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_afvmaps.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,26 +60,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AFVLogin.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AFVLogin.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVLogin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="17" />
+            <state relative-caret-position="330">
+              <caret line="58" column="52" lean-forward="false" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="53" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_afvmaps.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_afvmaps.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer2">
-            <state />
           </provider>
         </entry>
       </file>
@@ -2344,12 +2330,6 @@
             </path>
             <path>
               <item name="AFV" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="AFV" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
@@ -2377,7 +2357,7 @@
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
     <property name="AnalyzeApkAction.lastApkPath" value="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1524759509660" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1524760002350" />
     <property name="android.profiler.active" value="true" />
   </component>
   <component name="RecentsManager">
@@ -3045,7 +3025,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524759484120</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="new additions made to the map search function.">
+      <created>1524759937839</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1524759937839</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -3187,7 +3174,8 @@
     </ignored-roots>
     <MESSAGE value="new additions" />
     <MESSAGE value="new additions made to the comment blocks of the java files." />
-    <option name="LAST_COMMIT_MESSAGE" value="new additions made to the comment blocks of the java files." />
+    <MESSAGE value="new additions made to the map search function." />
+    <option name="LAST_COMMIT_MESSAGE" value="new additions made to the map search function." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3599,14 +3587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_afvmaps.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="261">
@@ -3616,6 +3596,14 @@
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="58" column="52" lean-forward="false" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="53" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
