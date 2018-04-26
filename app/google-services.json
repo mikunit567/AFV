@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "948268112987",
+    "firebase_url": "https://afviewer-3580a.firebaseio.com",
+    "project_id": "afviewer-3580a",
+    "storage_bucket": "afviewer-3580a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948268112987:android:30a3b4fdbfaae055",
+        "android_client_info": {
+          "package_name": "com.example.michael.afv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948268112987-bm6d07dgqeshqfn25g5k2oeh6cebehcj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0rwI0fvBARDIDSgHmgBAMADdz-4D7830"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
