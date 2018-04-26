@@ -46,16 +46,16 @@
         android:layout_alignBottom="@+id/B_schools"
         android:layout_alignParentStart="true"
         android:onClick="onClick"
-        android:text="Libraries" />
+        android:text="Nearest Libraries" />
 
     <Button
         android:id="@+id/B_schools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/TF_location"
-        android:layout_centerHorizontal="true"
         android:onClick="onClick"
-        android:text="Schools" />
+        android:text="Nearest Schools" />
 
 
 </RelativeLayout>

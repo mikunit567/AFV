@@ -16,13 +16,7 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="e16c0ec8-5371-48ab-9438-d6b9736114ef" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/DirectoryHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/DirectoryHelper.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/DisplayAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/DisplayAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/FaviconFetcher.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/FaviconFetcher.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/MainActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/NotificationTools.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/NotificationTools.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/Preferences.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/Preferences.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/SaveService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/SaveService.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_afvmaps.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_afvmaps.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -67,13 +61,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AFVLogin.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AFVLogin.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVLogin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-744">
-              <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+            <state relative-caret-position="126">
+              <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="17" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_afvmaps.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_afvmaps.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="261">
+              <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
           </provider>
         </entry>
       </file>
@@ -90,7 +97,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>afv</find>
       <find>mbook</find>
       <find>0</find>
       <find>sign</find>
@@ -120,6 +126,7 @@
       <find>no ha</find>
       <find>failed</find>
       <find>go back</find>
+      <find>libraries</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Michael\AndroidStudioProjects\MBOOK\text-to-speech-3.8.00</dir>
@@ -2237,7 +2244,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_afvreset.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_afvsignup.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_afvlogin.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_nav_afvdrawer.xml" />
@@ -2288,6 +2294,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/Preferences.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/FaviconFetcher.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/DirectoryHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_afvmaps.xml" />
       </list>
     </option>
   </component>
@@ -2370,7 +2377,7 @@
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
     <property name="AnalyzeApkAction.lastApkPath" value="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1524759466001" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1524759509660" />
     <property name="android.profiler.active" value="true" />
   </component>
   <component name="RecentsManager">
@@ -3031,7 +3038,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524759316961</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="new additions made to the comment blocks of the java files.">
+      <created>1524759484120</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1524759484120</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -3077,7 +3091,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="1.0" sideWeight="0.48174006" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20106952" sideWeight="0.52068967" order="2" side_tool="true" content_ui="tabs" />
@@ -3101,7 +3114,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32821724" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33175915" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24919786" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37755102" sideWeight="0.47931033" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37755102" sideWeight="0.47931033" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Android WiFi ADB" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293979" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994652" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -3183,7 +3196,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/michael/afv/AFVPureExpresso.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/mainmenuafv.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3447,9 +3459,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#631#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3591,10 +3601,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVLogin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-744">
-          <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        <state relative-caret-position="126">
+          <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="17" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_afvmaps.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
   </component>
