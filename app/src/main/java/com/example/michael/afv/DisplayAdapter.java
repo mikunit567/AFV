@@ -201,27 +201,27 @@ public class DisplayAdapter extends BaseAdapter {
 		if (darkMode) {
 			convertView.setBackgroundColor(Color.BLACK);
 			if (Layout.hasDate(Layout.getCurrentLayout())) {
-				mHolder.txt_date = (TextView) convertView.findViewById(R.id.txt_date);
+				mHolder.txt_date = convertView.findViewById(R.id.txt_date);
 				mHolder.txt_date.setTextColor(Color.WHITE);
 			}
-			mHolder.txt_id = (TextView) convertView.findViewById(R.id.txt_id);
-			mHolder.txt_filelocation = (TextView) convertView.findViewById(R.id.txt_fileLocation);
-			mHolder.txt_orig_url = (TextView) convertView.findViewById(R.id.txt_orig_url);
+			mHolder.txt_id = convertView.findViewById(R.id.txt_id);
+			mHolder.txt_filelocation = convertView.findViewById(R.id.txt_fileLocation);
+			mHolder.txt_orig_url = convertView.findViewById(R.id.txt_orig_url);
 			mHolder.txt_orig_url.setTextColor(Color.WHITE);
-			mHolder.txt_title = (TextView) convertView.findViewById(R.id.txt_title);
+			mHolder.txt_title = convertView.findViewById(R.id.txt_title);
 			mHolder.txt_title.setTextColor(Color.WHITE);
 		} else {
 			if (Layout.hasDate(Layout.getCurrentLayout())) {
-				mHolder.txt_date = (TextView) convertView.findViewById(R.id.txt_date);
+				mHolder.txt_date = convertView.findViewById(R.id.txt_date);
 			}
-			mHolder.txt_id = (TextView) convertView.findViewById(R.id.txt_id);
-			mHolder.txt_filelocation = (TextView) convertView.findViewById(R.id.txt_fileLocation);
-			mHolder.txt_orig_url = (TextView) convertView.findViewById(R.id.txt_orig_url);
-			mHolder.txt_title = (TextView) convertView.findViewById(R.id.txt_title);
+			mHolder.txt_id = convertView.findViewById(R.id.txt_id);
+			mHolder.txt_filelocation = convertView.findViewById(R.id.txt_fileLocation);
+			mHolder.txt_orig_url = convertView.findViewById(R.id.txt_orig_url);
+			mHolder.txt_title = convertView.findViewById(R.id.txt_title);
 		}
 
 		if (Layout.getCurrentLayout() != Layout.SMALL_TEXT_ONLY) {
-			mHolder.listimage = (ImageView) convertView.findViewById(R.id.listimage);
+			mHolder.listimage = convertView.findViewById(R.id.listimage);
 		}
 		convertView.setTag(mHolder);
 

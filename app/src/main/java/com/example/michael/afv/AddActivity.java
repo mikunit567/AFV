@@ -48,10 +48,10 @@ public class AddActivity extends Activity {
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         setContentView(R.layout.add_activity);
 
-        btn_save = (Button)findViewById(R.id.save_btn);
-        tipText = (TextView) findViewById(R.id.tipText);
+        btn_save = findViewById(R.id.save_btn);
+        tipText = findViewById(R.id.tipText);
 
-        edit_origurl = (EditText)findViewById(R.id.frst_editTxt);
+        edit_origurl = findViewById(R.id.frst_editTxt);
 		edit_origurl.setText(getIntent().getStringExtra(Intent.EXTRA_TEXT));
 
 		origurl = edit_origurl.getText().toString().trim();

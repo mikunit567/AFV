@@ -38,8 +38,8 @@ public class AFVTextToSpeech extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_afvactivity);
-        ed1 = (EditText) findViewById(R.id.editText);
-        b1 = (Button) findViewById(R.id.button);
+        ed1 = findViewById(R.id.editText);
+        b1 = findViewById(R.id.button);
 
         t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override

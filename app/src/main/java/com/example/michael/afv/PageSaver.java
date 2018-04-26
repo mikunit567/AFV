@@ -494,11 +494,7 @@ public class PageSaver {
 	private boolean isLinkValid (String url) {
 		if (url == null || url.length() == 0) {
 			return false;
-		} else if (!url.startsWith("http")) {
-			return false;
-		} else {
-			return true;
-		}
+		} else return url.startsWith("http");
 	}
 
     private void addLinkToList(String link, List<String> list) {
@@ -541,7 +537,6 @@ public class PageSaver {
 
         filename = fileNameReplacementPattern.matcher(filename).replaceAll("_");
         filename = filename.substring(0, Math.min(200, filename.length()));
-        ;
 
         return filename;
     }
@@ -656,19 +651,19 @@ public class PageSaver {
 }
 
 interface EventCallback {
-    public void onProgressChanged(int progress, int maxProgress, boolean indeterminate);
+    void onProgressChanged(int progress, int maxProgress, boolean indeterminate);
 
-    public void onProgressMessage(String fileName);
+    void onProgressMessage(String fileName);
 	
-	public void onPageTitleAvailable(String pageTitle);
+	void onPageTitleAvailable(String pageTitle);
 
-    public void onLogMessage(String message);
+    void onLogMessage(String message);
 
-    public void onError(Throwable error);
+    void onError(Throwable error);
 
-	public void onError(String errorMessage);
+	void onError(String errorMessage);
 
-	public void onFatalError(Throwable error, String pageUrl);
+	void onFatalError(Throwable error, String pageUrl);
 }
 
 

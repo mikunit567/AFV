@@ -85,7 +85,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 
 		setContentView(R.layout.main);
 		
-		mainGrid = (GridView) findViewById(R.id.List);
+		mainGrid = findViewById(R.id.List);
 
 		mainGrid.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
 
@@ -101,15 +101,15 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 			default:
 		}
 		
-		sortOrder = sortOrder.fromInt(sharedPref.getInt("current_sort_order", 0));
+		sortOrder = DisplayAdapter.SortOrder.fromInt(sharedPref.getInt("current_sort_order", 0));
 
 		pageLoadDialog = new ProgressDialog(MainActivity.this);
 		actionbar = getActionBar();
 
 		setUpGridClickListener();
 
-		noSavedPages = (TextView) findViewById(R.id.textNoSavedPages);
-		helpText = (TextView) findViewById(R.id.how_to_text);
+		noSavedPages = findViewById(R.id.textNoSavedPages);
+		helpText = findViewById(R.id.how_to_text);
 
 		gridAdapter = new DisplayAdapter(MainActivity.this);
 
@@ -350,8 +350,8 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 					AlertDialog.Builder rename_dialog = new AlertDialog.Builder(MainActivity.this);
 					View layout = getLayoutInflater().inflate(R.layout.rename_dialog, null);
 					rename_dialog.setView(layout);
-					e = (EditText) layout.findViewById(R.id.rename_dialog_edit);
-					TextView t = (TextView) layout.findViewById(R.id.rename_dialog_text);
+					e = layout.findViewById(R.id.rename_dialog_edit);
+					TextView t = layout.findViewById(R.id.rename_dialog_text);
 					if (gridAdapter.selectedViewsPositions.size() == 1) {
 						e.setText(gridAdapter.getPropertiesByPosition(gridAdapter.selectedViewsPositions.get(0), AFVDatabase.TITLE));
 						e.selectAll();

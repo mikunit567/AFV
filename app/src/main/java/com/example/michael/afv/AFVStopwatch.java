@@ -55,12 +55,12 @@ public class AFVStopwatch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afvstopwatch);
 
-        textView = (TextView)findViewById(R.id.textView);
-        start = (Button)findViewById(R.id.button);
-        pause = (Button)findViewById(R.id.button2);
-        reset = (Button)findViewById(R.id.button3);
-        lap = (Button)findViewById(R.id.button4) ;
-        listView = (ListView)findViewById(R.id.listview1);
+        textView = findViewById(R.id.textView);
+        start = findViewById(R.id.button);
+        pause = findViewById(R.id.button2);
+        reset = findViewById(R.id.button3);
+        lap = findViewById(R.id.button4);
+        listView = findViewById(R.id.listview1);
 
 
         handler = new Handler() ;

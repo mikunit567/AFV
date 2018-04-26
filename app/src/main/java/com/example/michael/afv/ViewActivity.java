@@ -84,7 +84,7 @@ public class ViewActivity extends Activity {
 
 		setProgressBarIndeterminateVisibility(true);
 
-		webview = (WebView) findViewById(R.id.webview);
+		webview = findViewById(R.id.webview);
 		setupWebView();
 		
 		invertedRendering = preferences.getBoolean("dark_mode", false);
@@ -185,7 +185,7 @@ public class ViewActivity extends Activity {
 			case R.id.action_open_file_in_external:
 				Intent newIntent = new Intent(Intent.ACTION_VIEW);
 				newIntent.setDataAndType(Uri.fromFile(new File(fileLocation)), "text/html");
-				newIntent.setFlags(newIntent.FLAG_ACTIVITY_NEW_TASK);
+				newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				try {
 					startActivity(newIntent);
 				} catch (ActivityNotFoundException e) {
@@ -236,13 +236,13 @@ public class ViewActivity extends Activity {
 		build.setTitle("Details of saved page");
 		View layout = getLayoutInflater().inflate(R.layout.properties_dialog, null);
 		build.setView(layout);
-		TextView t = (TextView) layout.findViewById(R.id.properties_dialog_text_title);
+		TextView t = layout.findViewById(R.id.properties_dialog_text_title);
 		t.setText("Title: \r\n" + title);
-		t = (TextView) layout.findViewById(R.id.properties_dialog_text_file_location);
+		t = layout.findViewById(R.id.properties_dialog_text_file_location);
 		t.setText("File location: \r\n" + fileLocation);
-		t = (TextView) layout.findViewById(R.id.properties_dialog_text_date);
+		t = layout.findViewById(R.id.properties_dialog_text_date);
 		t.setText("Date & Time saved: \r\n" + date);
-		t = (TextView) layout.findViewById(R.id.properties_dialog_text_orig_url);
+		t = layout.findViewById(R.id.properties_dialog_text_orig_url);
 		t.setText("Saved from: \r\n" + incomingIntent.getStringExtra(AFVDatabase.ORIGINAL_URL));
 		build.setPositiveButton("Close",
 			new DialogInterface.OnClickListener() {

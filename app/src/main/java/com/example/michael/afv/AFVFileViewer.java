@@ -166,14 +166,14 @@ public class AFVFileViewer extends AppCompatActivity
 
         //Setup UI
         setContentView(R.layout.file_afviewer);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toolbar = findViewById(R.id.toolbar);
+        drawer = findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        listview = (ListView) findViewById(R.id.list);
+        listview = findViewById(R.id.list);
         registerForContextMenu(listview);
         listview.setOnItemClickListener((adapterView, view, i, l) -> openFile(files[i]));
         //Restore data
@@ -369,11 +369,11 @@ public class AFVFileViewer extends AppCompatActivity
             settings_dialog.setIcon(android.R.drawable.ic_menu_preferences);
             settings_dialog.setTitle("Settings");
             settings_dialog.setView(settings_view);
-            final CheckBox folders_first_checkbox = (CheckBox) settings_view.findViewById(R.id.folders_first_checkbox);
-            final CheckBox hidden_files_checkbox = (CheckBox) settings_view.findViewById(R.id.hidden_files_checkbox);
-            final CheckBox recent_items_checkbox = (CheckBox) settings_view.findViewById(R.id.recent_items_checkbox);
-            final Spinner sort_criteria = (Spinner) settings_view.findViewById(R.id.sort_criteria);
-            final Spinner sort_mode = (Spinner) settings_view.findViewById(R.id.sort_mode);
+            final CheckBox folders_first_checkbox = settings_view.findViewById(R.id.folders_first_checkbox);
+            final CheckBox hidden_files_checkbox = settings_view.findViewById(R.id.hidden_files_checkbox);
+            final CheckBox recent_items_checkbox = settings_view.findViewById(R.id.recent_items_checkbox);
+            final Spinner sort_criteria = settings_view.findViewById(R.id.sort_criteria);
+            final Spinner sort_mode = settings_view.findViewById(R.id.sort_mode);
             folders_first_checkbox.setChecked(folderFirst);
             hidden_files_checkbox.setChecked(hiddenFiles);
             recent_items_checkbox.setChecked(recentItems);
@@ -392,7 +392,7 @@ public class AFVFileViewer extends AppCompatActivity
                         break;
                     }
                 }
-                NavigationView nav = (NavigationView) findViewById(R.id.nav_view);
+                NavigationView nav = findViewById(R.id.nav_view);
                 nav.getMenu().findItem(R.id.nav_recent).setVisible(recentItems);
                 if (recentsView) {
                     if (recentItems)
@@ -434,7 +434,7 @@ public class AFVFileViewer extends AppCompatActivity
                 startActivity(email);
             }
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
 
@@ -442,7 +442,7 @@ public class AFVFileViewer extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else if (file != null && file.getParentFile() != null) {
@@ -610,15 +610,15 @@ public class AFVFileViewer extends AppCompatActivity
                 if (isValid) {
                     final View player = getLayoutInflater().inflate(R.layout.music_afvplayer, null);
                     player.findViewById(R.id.icon);
-                    btn_play = (ImageButton) player.findViewById(R.id.btn_play);
-                    btn_rev = (ImageButton) player.findViewById(R.id.btn_rev);
-                    btn_forward = (ImageButton) player.findViewById(R.id.btn_forward);
-                    current_duration = (TextView) player.findViewById(R.id.current_duration);
-                    total_duration = (TextView) player.findViewById(R.id.total_duration);
-                    seek = (SeekBar) player.findViewById(R.id.seek);
-                    title = (TextView) player.findViewById(R.id.title);
-                    icon = (ImageView) player.findViewById(R.id.imageView);
-                    album_art = (ImageView) player.findViewById(R.id.album_art);
+                    btn_play = player.findViewById(R.id.btn_play);
+                    btn_rev = player.findViewById(R.id.btn_rev);
+                    btn_forward = player.findViewById(R.id.btn_forward);
+                    current_duration = player.findViewById(R.id.current_duration);
+                    total_duration = player.findViewById(R.id.total_duration);
+                    seek = player.findViewById(R.id.seek);
+                    title = player.findViewById(R.id.title);
+                    icon = player.findViewById(R.id.imageView);
+                    album_art = player.findViewById(R.id.album_art);
                     title.setText(current_file.getName());
                     icon.setImageResource(R.drawable.file_music);
                     if (data != null) {
@@ -715,7 +715,7 @@ public class AFVFileViewer extends AppCompatActivity
             } else if (Arrays.asList(image_ext).contains(ext)) {
                 AlertDialog.Builder preview_dialog = new AlertDialog.Builder(new ContextThemeWrapper(AFVFileViewer.this, android.R.style.Theme_Black));
                 View image_view = getLayoutInflater().inflate(R.layout.image_afvviewer, null);
-                final ImageView preview = (ImageView) image_view.findViewById(R.id.preview);
+                final ImageView preview = image_view.findViewById(R.id.preview);
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inJustDecodeBounds = true;
                 //Returns null, sizes are in the options variable
@@ -767,11 +767,11 @@ public class AFVFileViewer extends AppCompatActivity
         int duration;
         AlertDialog.Builder properties_dialog = new AlertDialog.Builder(AFVFileViewer.this);
         View properties_view = getLayoutInflater().inflate(R.layout.properties_afvview, null);
-        TextView name = (TextView) properties_view.findViewById(R.id.name);
-        TextView type = (TextView) properties_view.findViewById(R.id.type);
-        TextView time = (TextView) properties_view.findViewById(R.id.time);
-        final TextView size = (TextView) properties_view.findViewById(R.id.size);
-        final TextView details = (TextView) properties_view.findViewById(R.id.details);
+        TextView name = properties_view.findViewById(R.id.name);
+        TextView type = properties_view.findViewById(R.id.type);
+        TextView time = properties_view.findViewById(R.id.time);
+        final TextView size = properties_view.findViewById(R.id.size);
+        final TextView details = properties_view.findViewById(R.id.details);
         name.setText(current_file.getName());
         SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss a");
         time.setText(format.format(current_file.lastModified()));
@@ -1277,10 +1277,10 @@ public class AFVFileViewer extends AppCompatActivity
             if (view == null) {
                 view = mInflater.inflate(R.layout.list_afvitem, parent, false);
                 holder = new ViewHolder();
-                holder.name = (TextView) view.findViewById(R.id.name);
-                holder.date = (TextView) view.findViewById(R.id.date);
-                holder.details = (TextView) view.findViewById(R.id.details);
-                holder.icon = (ImageView) view.findViewById(R.id.icon);
+                holder.name = view.findViewById(R.id.name);
+                holder.date = view.findViewById(R.id.date);
+                holder.details = view.findViewById(R.id.details);
+                holder.icon = view.findViewById(R.id.icon);
                 view.setTag(holder);
             } else {
                 holder = (ViewHolder) view.getTag();
@@ -1336,7 +1336,7 @@ public class AFVFileViewer extends AppCompatActivity
                     File current_file = files[first + i];
                     if (!current_file.exists())
                         continue;
-                    holder.icon = (ImageView) view.getChildAt(i).findViewById(R.id.icon);
+                    holder.icon = view.getChildAt(i).findViewById(R.id.icon);
                     if (current_file.isDirectory()) {
                         holder.details.setText("");
                         File temp[] = current_file.listFiles();

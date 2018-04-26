@@ -45,7 +45,7 @@ public class AFVTextViewer extends AppCompatActivity {
         setContentView(R.layout.webviewafv);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
                 WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
-        wv = (WebView) findViewById(R.id.browser);
+        wv = findViewById(R.id.browser);
         wv.setWebViewClient(new MyClient());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             wv.setLayerType(View.LAYER_TYPE_HARDWARE, null);

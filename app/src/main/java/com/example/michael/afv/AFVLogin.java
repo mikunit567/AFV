@@ -38,11 +38,11 @@ public class AFVLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        auth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance(); // instance initialisation of the firebase authentication
 
         if (auth.getCurrentUser() != null) {
             startActivity(new Intent(AFVLogin.this, AFVSplashScreen.class));
-            finish();
+            finish(); // once the user authenticated the login will transition to the splash screen
         }
 
         setContentView(R.layout.activity_afvlogin);
@@ -66,15 +66,17 @@ public class AFVLogin extends AppCompatActivity {
 
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
-                return;
+                return; // code used to test if something has been inputted within the email text field
             }
 
             if (TextUtils.isEmpty(password)) {
                 Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
-                return;
+                return; // check if something has been enter in the password text field
             }
 
             progressBar.setVisibility(View.VISIBLE);
+
+            // the block of code beneath sets the parameters for a successful login if not then it will not authenticate
 
             auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(AFVLogin.this, task -> {

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AnalysisUIOptions">
-    <option name="SCOPE_TYPE" value="3" />
-  </component>
   <component name="AndroidLayouts">
     <shared>
       <config>
@@ -16,6 +13,21 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="e16c0ec8-5371-48ab-9438-d6b9736114ef" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVDOCViewer.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVDOCViewer.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVFileViewer.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVFileViewer.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVHTMLViewer.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVHTMLViewer.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVLogin.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVLogin.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVPasswordReset.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVPasswordReset.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVStopwatch.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVStopwatch.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVTextToSpeech.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVTextToSpeech.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVTextViewer.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVTextViewer.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVVideoPlayer.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVVideoPlayer.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AddActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AddActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/DisplayAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/DisplayAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/MainActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/PageSaver.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/PageSaver.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/ViewActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/ViewActivity.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,13 +72,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AFVLogin.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVLogin.java">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="58" column="52" lean-forward="false" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="53" />
+            <state relative-caret-position="168">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="android-manifest">
+            <state />
           </provider>
         </entry>
       </file>
@@ -2244,7 +2259,6 @@
         <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/michael/afv/AFVPureExpresso.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_afvmaino.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/michael/afv/AFVTest2.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/michael/afv/AFVPureExpressoTesting.java" />
         <option value="$PROJECT_DIR$/app/src/test/java/com/example/michael/afv/AFVTest.java" />
@@ -2260,7 +2274,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVFileViewer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVGetNearbyPlacesData.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVHTMLViewer.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVLogin.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVLogout.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVMapsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVPasswordReset.java" />
@@ -2281,6 +2294,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/FaviconFetcher.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/DirectoryHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_afvmaps.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVLogin.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -2315,13 +2330,12 @@
             <path>
               <item name="AFV" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
             </path>
             <path>
               <item name="AFV" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="afv" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="assets" type="edd41e36:AndroidSourceTypeNode" />
             </path>
             <path>
               <item name="AFV" type="1abcf292:AndroidViewProjectNode" />
@@ -2357,7 +2371,7 @@
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
     <property name="AnalyzeApkAction.lastApkPath" value="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1524760002350" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1524769836290" />
     <property name="android.profiler.active" value="true" />
   </component>
   <component name="RecentsManager">
@@ -3032,7 +3046,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524759937839</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="new additions made to code.">
+      <created>1524766389829</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1524766389829</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -3078,6 +3099,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="1.0" sideWeight="0.48174006" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20106952" sideWeight="0.52068967" order="2" side_tool="true" content_ui="tabs" />
@@ -3093,6 +3115,7 @@
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867885" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39905548" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988507" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3140496" sideWeight="0.47326204" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="AllProjects" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295238" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -3101,7 +3124,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32821724" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33175915" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24919786" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37755102" sideWeight="0.47931033" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37755102" sideWeight="0.47931033" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Android WiFi ADB" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293979" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994652" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -3113,7 +3136,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988507" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3140496" sideWeight="0.47326204" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="StringPreview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -3175,7 +3197,8 @@
     <MESSAGE value="new additions" />
     <MESSAGE value="new additions made to the comment blocks of the java files." />
     <MESSAGE value="new additions made to the map search function." />
-    <option name="LAST_COMMIT_MESSAGE" value="new additions made to the map search function." />
+    <MESSAGE value="new additions made to code." />
+    <option name="LAST_COMMIT_MESSAGE" value="new additions made to code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3285,17 +3308,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/michael/afv/AFVTest2.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="393" column="11" lean-forward="true" selection-start-line="393" selection-start-column="11" selection-end-line="393" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/test/rules/0.5/rules-0.5-sources.jar!/android/support/test/rule/ActivityTestRule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -3600,10 +3612,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/michael/afv/AFVLogin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="58" column="52" lean-forward="false" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="53" />
+        <state relative-caret-position="204">
+          <caret line="78" column="120" lean-forward="false" selection-start-line="78" selection-start-column="120" selection-end-line="78" selection-end-column="120" />
+          <folding>
+            <element signature="e#2062#2154#0" expanded="true" />
+            <element signature="e#2062#2154#0" expanded="true" />
+            <element signature="e#2165#2263#0" expanded="true" />
+            <element signature="e#2165#2263#0" expanded="true" />
+            <element signature="e#2274#4001#0" expanded="true" />
+            <element signature="e#3497#3533#0" expanded="true" />
+            <element signature="e#2274#4001#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
       </provider>
     </entry>
   </component>
