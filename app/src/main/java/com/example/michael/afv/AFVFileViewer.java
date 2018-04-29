@@ -287,15 +287,6 @@ public class AFVFileViewer extends AppCompatActivity
             else
                 showMsg("Music folder not accessible", 1);
 
-        } else if (id == R.id.nav_documents) {
-            File f = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
-            if (f == null || f.getPath().equals("") || !f.exists())
-                f = new File(Environment.getExternalStorageDirectory().getPath() + "/DOCUMENTS");
-            if (f.exists())
-                updateFiles(f);
-            else
-                showMsg("Documents folder not accessible", 1);
-
         } else if (id == R.id.nav_videos){
             File f = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
             if (f == null || f.getPath().equals("") || !f.exists())
