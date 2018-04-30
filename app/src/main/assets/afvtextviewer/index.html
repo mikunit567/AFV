@@ -56,7 +56,7 @@
         var mode = modelist.getModeForPath(filePath).mode;
         editor.session.setMode(mode);
         var bar = document.getElementById("statusBar");
-        bar.innerHTML = 'Vudit: '+ filename;
+        bar.innerHTML = 'AFV: '+ filename;
         var StatusBar = ace.require("ace/ext/statusbar").StatusBar;
         new StatusBar(editor, bar);
         var textarea = document.getElementsByClassName('ace_text-input')[0];
