@@ -132,7 +132,7 @@ public class SaveService extends Service {
 		}
 
 		private String getNewDirectoryPath(String title, String oldDirectoryPath) {
-			String returnString = title.replaceAll("[^a-zA-Z0-9-_\\.]", "_") + DirectoryHelper.createUniqueFilename(); //TODO: Fix this to support non A-Z & 0-9 characters
+			String returnString = title.replaceAll("[^a-zA-Z0-9-_\\.]", "_") + DirectoryHelper.createUniqueFilename();
 
 			File f = new File(oldDirectoryPath);
 			return f.getParentFile().getAbsolutePath() + File.separator  + returnString + File.separator;

@@ -262,6 +262,16 @@
                     android:mimeType="*/*"
                     android:pathPattern=".*\\.fodp"
                     android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.doc"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.docx"
+                    android:scheme="file" />
             </intent-filter>
         </activity>
         <activity

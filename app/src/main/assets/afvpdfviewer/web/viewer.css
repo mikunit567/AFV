@@ -519,7 +519,7 @@ html[dir='rtl'] #toolbarContainer, .findbar, .secondaryToolbar {
 }
 
 #loadingBar .progress.indeterminate {
-  background-color: #DEDEDE;
+  background-color: #999;
   -webkit-transition: none;
   transition: none;
 }

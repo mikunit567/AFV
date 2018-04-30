@@ -76,7 +76,7 @@ public class AFVTextViewer extends AppCompatActivity {
             file_path = URLEncoder.encode(file_path, "UTF-8");
         } catch (Exception e) {
         }
-        wv.loadUrl("file:///android_asset/textviewer/index.html?file=" + file_path);
+        wv.loadUrl("file:///android_asset/afvtextviewer/index.html?file=" + file_path);
         StringBuilder text = new StringBuilder();
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
